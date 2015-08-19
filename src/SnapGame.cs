@@ -21,6 +21,9 @@ namespace CardGames
 		{
 			//Fetch the next batch of UI interaction
 			SwinGame.ProcessEvents();
+			SwinGame.LoadSoundEffectNamed ("Slap1", "slap_1.wav");
+			SwinGame.LoadSoundEffectNamed ("Slap2", "slap_2.wav");
+			SwinGame.LoadSoundEffectNamed ("SlapBoth","slap_both.wav");
 
 			if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
 			{
@@ -33,14 +36,16 @@ namespace CardGames
 				if ( SwinGame.KeyTyped (KeyCode.vk_LSHIFT) &&
 					SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
 				{
-					//TODO: add sound effects
+					SwinGame.PlaySoundEffect ("slap_both.wav");
 				}
 				else if (SwinGame.KeyTyped (KeyCode.vk_LSHIFT))
 				{
 					myGame.PlayerHit (0);
+					SwinGame.PlaySoundEffect ("slap_1.wav");
 				}
 				else if (SwinGame.KeyTyped (KeyCode.vk_RSHIFT))
 				{
+					SwinGame.PlaySoundEffect ("slap_2.wav");
 					myGame.PlayerHit (1);
 				}
 			}
